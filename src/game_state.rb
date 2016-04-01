@@ -15,6 +15,7 @@ class GameState
   def initialize(num_players, banker_ind)
     @players = [:player1, :player2, :player3, :player4].slice(0..num_players)
     @player_doubles = [0,0,0,0] # Keep track of how many doubles each player has rolled
+    @player_positions = [0,0,0,0] # Player positions on the board
     @current_player = 0
     @banker = @players[banker_ind]
 
@@ -70,11 +71,31 @@ class GameState
 
     @spaces[0].grouped_properties = [@spaces[2],] # Example color grouping
     @spaces[1].grouped_properties = [@spaces[1],]
+  end
 
+  def move
+    # Get current player
+    # Roll some dice
+    # Check doubles as necessary
+    # Move the player to
+    player_positions[@current_player] = (d1 + d2 + player_positions[@current_player]) % @spaces.length
+    # Check if current is less than previous. If it is, we passed go. Collect $200
+    # Play the current space.
+    curr_space = @spaces[player_positions[@current_player]]
+    unless curr_space.owner and curr_space.owner == :bank
+      @spaces[player_positions[@current_player]].play(@players[@current_player], bank: bank, players: players)
+    else
+      auction_space(curr_space, players[@current_player])
+    end
+  end
 
+  def sell_property(prop, player, bank)
+    # Give player money from bank
+    # Adjust property status, etc
+  end
 
-
-
+  def auction_space(prop, player)
+    # stub
   end
 
 end
