@@ -92,7 +92,7 @@ Spaces that interact with other Spaces on the board (namely Railroads and Utilit
 
 # Lessons Learned and Reflection
 
-First of all, the most important lesson: **It's never as simple as it looks. It's. NEVER. As simple as it looks.
+First of all, the most important lesson: **It's never as simple as it looks. It's. NEVER. As simple as it looks.**
 
 Overall I'm somewhat happy with the design, though there are some weaknesses. From a high level:
 
